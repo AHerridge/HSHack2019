@@ -6,53 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <SeekBar
-        android:id="@+id/sb"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="4"
-        android:theme="@style/Widget.AppCompat.SeekBar.Discrete"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="123dp" />
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="407dp"
+        android:layout_height="242dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/verysad"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="180dp" />
+        <ImageView
+            android:id="@+id/sad"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="116dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/neutral"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/sad" />
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/veryhappy"
-        tools:layout_editor_absoluteX="187dp"
-        tools:layout_editor_absoluteY="0dp" />
+        <ImageView
+            android:id="@+id/happy"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="116dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/veryhappy"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/happy" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/happy"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="477dp" />
+        <ImageView
+            android:id="@+id/veryhappy"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="116dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/veryhappy" />
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/sad"
-        tools:layout_editor_absoluteX="244dp"
-        tools:layout_editor_absoluteY="387dp" />
+        <ImageView
+            android:id="@+id/neutral"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="116dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/happy"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/neutral" />
 
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/neutral"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="333dp" />
+        <ImageView
+            android:id="@+id/verysad"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="116dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/sad"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/verysad" />
+
+        <TextView
+            android:id="@+id/question1"
+            android:layout_width="334dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="How Do You Feel?"
+            android:textAlignment="center"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/neutral"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

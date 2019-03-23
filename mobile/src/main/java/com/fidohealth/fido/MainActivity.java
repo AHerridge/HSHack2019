@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +21,46 @@ public class MainActivity extends AppCompatActivity {
 
         createNotificationChannel();
         addNotification();
+
+        findViewById(R.id.veryhappy).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submit(1);
+            }
+        });
+
+        findViewById(R.id.happy).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submit(.5);
+            }
+        });
+
+        findViewById(R.id.neutral).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submit(0);
+            }
+        });
+
+        findViewById(R.id.sad).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submit(-.5);
+            }
+        });
+
+        findViewById(R.id.verysad).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submit(-1);
+            }
+        });
+    }
+
+    private void submit(double mood) {
+        TextView question1 = findViewById(R.id.question1);
+        question1.setText(String.valueOf(mood));
     }
 
     private void createNotificationChannel() {
@@ -34,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     private void addNotification() {
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.face_1)
+                        .setSmallIcon(R.drawable.veryhappy)
                         .setContentTitle("Mood Survey")
                         .setContentText("How do you feel?")
                         .setChannelId("SurveyNotifier");
