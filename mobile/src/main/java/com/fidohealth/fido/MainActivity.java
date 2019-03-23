@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void submit(double mood) {
-        TextView question1 = findViewById(R.id.question1);
-        question1.setText(String.valueOf(mood));
+        User user = UserDao.getById("Alex");
+        user.data.add(new DataSample(1.0, 0.78, 0.2, 0.85, 0.25, mood));
     }
 
     private void createNotificationChannel() {
