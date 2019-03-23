@@ -36,5 +36,4 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.commons/commons-math3
     implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
 
-
 }

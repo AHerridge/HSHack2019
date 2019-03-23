@@ -347,7 +347,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void finish() {
         Intent intent = new Intent(this, MainActivity.class);
