@@ -16,18 +16,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Intent surveyIntent = new Intent(this, SurveyBroadcastReceiver.class);
-//        PendingIntent pendingSurveyIntent = PendingIntent.getBroadcast(this, 0, surveyIntent, 0);
-
         createNotificationChannel();
         addNotification();
-//        Notification moodSurvey = new Notification.Builder(this, NotificationChannel.DEFAULT_CHANNEL_ID)
-//                .setContentTitle("How do you feel?")
-//                .setContentText("YO")
-//                .setSmallIcon(R.drawable.face_1)
-//                .addAction(R.drawable.face_1, "Good", pendingSurveyIntent)
-//                .build();
-//        NotificationManagerCompat.from(this).notify(1, moodSurvey);
     }
 
     private void createNotificationChannel() {
@@ -44,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.face_1)
-                        .setContentTitle("Notifications Example")
-                        .setContentText("This is a test notification")
+                        .setContentTitle("Mood Survey")
+                        .setContentText("How do you feel?")
                         .setChannelId("SurveyNotifier");
 
         Intent notificationIntent = new Intent(this, MainActivity.class);
