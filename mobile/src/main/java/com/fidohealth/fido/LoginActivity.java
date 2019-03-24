@@ -341,7 +341,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     @Override
     public void finish() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, PredictActivity.class);
         intent.putExtra("ActiveUserID", authenticatedUser.name);
         startActivity(intent);
     }

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "283938223808",
+    "firebase_url": "https://fidohealth.firebaseio.com",
+    "project_id": "fidohealth",
+    "storage_bucket": "fidohealth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283938223808:android:b44aa7af155e6c47",
+        "android_client_info": {
+          "package_name": "com.fidohealth.fido"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283938223808-70opegaeq2rcobfbvkar8flkdbkc0kbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzKEpW_0TmYceyoAwmxknj86FQx-mlc7M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

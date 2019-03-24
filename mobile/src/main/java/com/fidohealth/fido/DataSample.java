@@ -13,6 +13,10 @@ public class DataSample {
     }
 
     public double[] asArray() {
-        return new double[]{ambient_volume, ambient_temp, ambient_humd, activity_level, heart_rate, user_mood};
+        return new double[]{ambient_volume, ambient_temp, ambient_humd, activity_level, heart_rate, 1};
+    }
+
+    public double getUserMood() {
+        return user_mood;
     }
 }

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PredictActivity">
+
+    <ImageView
+        android:id="@+id/predictedEmotion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/veryhappy" />
+
+    <TextView
+        android:id="@+id/weather"
+        android:layout_width="109dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="8dp"
+        android:text="Weather="
+        app:layout_constraintEnd_toStartOf="@+id/activity"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity"
+        android:layout_width="114dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="36dp"
+        android:text="ActivityLevel="
+        app:layout_constraintEnd_toStartOf="@+id/temperature"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="104dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="4dp"
+        android:text="Temp="
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/humidity"
+        android:layout_width="107dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Humidity="
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weather" />
+
+    <TextView
+        android:id="@+id/heartRate"
+        android:layout_width="112dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="HeartRate="
+        app:layout_constraintEnd_toStartOf="@+id/volume"
+        app:layout_constraintStart_toEndOf="@+id/humidity"
+        app:layout_constraintTop_toBottomOf="@+id/activity" />
+
+    <TextView
+        android:id="@+id/volume"
+        android:layout_width="103dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="Volume="
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temperature" />
+</android.support.constraint.ConstraintLayout>

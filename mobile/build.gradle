@@ -35,5 +35,7 @@ dependencies {
     implementation group: 'gov.nist.math', name: 'jama', version: '1.0.3'
     // https://mvnrepository.com/artifact/org.apache.commons/commons-math3
     implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
-
+    implementation 'com.google.firebase:firebase-core:16.0.1'
 }
+
+//apply plugin: 'com.google.gms.google-services:15.0.1'
