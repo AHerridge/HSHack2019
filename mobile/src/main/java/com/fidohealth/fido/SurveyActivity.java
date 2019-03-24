@@ -21,7 +21,7 @@ public class SurveyActivity extends AppCompatActivity {
     EditText editTextHeight, editTextWeight, editTextName;
     Spinner conditi;
     TextView textViewProfile;
-    String[] conditio = new String[]{"Depression", "Seizures", "ADHD"};
+    String[] conditio = new String[]{"None", "Depression", "Seizures", "ADHD"};
 
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
@@ -29,12 +29,13 @@ public class SurveyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_survey);
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        submitButton = findViewById(R.id.buttonSubmitSurvey);
+        submitButton = findViewById(R.id.SubmitSurvey);
+        editTextName = findViewById(R.id.Name);
         editTextHeight = findViewById(R.id.Height);
         editTextWeight = findViewById(R.id.Weight);
         textViewProfile = findViewById(R.id.Profile);
@@ -42,13 +43,6 @@ public class SurveyActivity extends AppCompatActivity {
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(SurveyActivity.this, android.R.layout.simple_list_item_1, conditio);
         adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         conditi.setAdapter(adapt);
-        textViewProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SurveyActivity.this, CreateAccountActivity.class));
-                finish();
-            }
-        });
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +57,9 @@ public class SurveyActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
                 databaseReference.child(user.getUid()).setValue(userInfo);
+
+                finish();
+                startActivity(new Intent(getApplicationContext(), PredictActivity.class));
             }
         });
     }
