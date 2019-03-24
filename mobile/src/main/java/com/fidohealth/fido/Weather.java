@@ -47,7 +47,6 @@ public class Weather extends AsyncTask<String, String, String> {
 
             return buffer.toString();
 
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
