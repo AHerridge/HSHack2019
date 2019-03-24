@@ -41,8 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class));
                 finish();
+                startActivity(new Intent(getApplicationContext(), CreateAccountActivity.class));
             }
         });
 
@@ -56,10 +56,13 @@ public class LoginActivity extends AppCompatActivity {
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful())
+                                if (task.isSuccessful()) {
                                     Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
-                                else
+                                    finish();
+                                    startActivity(new Intent(LoginActivity.this, PredictActivity.class));
+                                } else {
                                     Toast.makeText(LoginActivity.this, "Log In Failed", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         });
             }

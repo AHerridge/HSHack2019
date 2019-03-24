@@ -25,12 +25,20 @@ public class PredictActivity extends AppCompatActivity {
         double weather = Math.random();
         double heartRate = Math.random();
 
-        ((TextView) findViewById(R.id.temperature)).append("" + temperature);
+        /*((TextView) findViewById(R.id.temperature)).append("" + temperature);
         ((TextView) findViewById(R.id.humidity)).append("" + humidity);
         ((TextView) findViewById(R.id.volume)).append("" + volume);
         ((TextView) findViewById(R.id.activity)).append("" + activity);
         ((TextView) findViewById(R.id.weather)).append("" + weather);
         ((TextView) findViewById(R.id.heartRate)).append("" + heartRate);
+        */
+        
+        //findViewById(R.id.activitylevel);
+        findViewById(R.id.weather);
+        findViewById(R.id.weather);
+        findViewById(R.id.weather);
+        findViewById(R.id.weather);
+
 
         ((ImageView) findViewById(R.id.predictedEmotion)).setImageResource(UserDao.getById("Alex").getEmotion(temperature, humidity, volume, activity, weather));
 
