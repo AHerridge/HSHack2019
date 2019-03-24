@@ -1,5 +1,6 @@
 package com.fidohealth.fido;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +13,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -51,10 +51,13 @@ public class CreateAccountActivity extends AppCompatActivity {
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful())
+                                if (task.isSuccessful()) {
                                     Toast.makeText(CreateAccountActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
-                                else
+                                    finish();
+                                    startActivity(new Intent(getApplicationContext(), SurveyActivity.class));
+                                } else {
                                     Toast.makeText(CreateAccountActivity.this, "Account Creation Failed", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         });
             }
