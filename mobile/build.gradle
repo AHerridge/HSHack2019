@@ -29,13 +29,14 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     wearApp project(':wear')
-    implementation 'com.google.android.gms:play-services-wearable:+'
-    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+//    implementation 'com.google.android.gms:play-services-base:15.0.1'
+//    implementation 'com.google.android.gms:play-services-wearable:+'
     // https://mvnrepository.com/artifact/gov.nist.math/jama
     implementation group: 'gov.nist.math', name: 'jama', version: '1.0.3'
     // https://mvnrepository.com/artifact/org.apache.commons/commons-math3
     implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
     implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-auth:16.0.1'
 }
 
-//apply plugin: 'com.google.gms.google-services:15.0.1'
+apply plugin: 'com.google.gms.google-services'

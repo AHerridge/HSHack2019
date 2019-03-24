@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <LinearLayout
         android:id="@+id/loginForm"
         android:layout_width="match_parent"
@@ -19,7 +18,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:text="Create Account"
             android:textAlignment="center"
             android:textSize="30sp" />
 
@@ -27,32 +26,32 @@
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15sp"
             android:ems="10"
             android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:layout_margin="15sp"/>
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15sp"
             android:ems="10"
             android:hint="Password"
-            android:inputType="textPassword"
-            android:layout_margin="15sp"/>
+            android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/buttonLogin"
+            android:id="@+id/buttonCreateAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Log In"
-            android:layout_margin="15sp"/>
+            android:layout_margin="15sp"
+            android:text="Register" />
 
         <TextView
-            android:id="@+id/textViewCreateAccount"
+            android:id="@+id/textViewLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Click here to create account"
+            android:text="Click here to login"
             android:textAlignment="center" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
