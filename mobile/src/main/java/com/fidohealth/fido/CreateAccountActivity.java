@@ -1,6 +1,5 @@
 package com.fidohealth.fido;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,57 +12,52 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-/**
- * A login screen that offers login via email/password.
- */
-public class LoginActivity extends AppCompatActivity {
-    Button loginButton;
+public class CreateAccountActivity extends AppCompatActivity {
+
+    Button createAccountButton;
     EditText editTextEmail, editTextPassword;
-    TextView textViewCreateAccount;
+    TextView textViewLogin;
 
     FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_create_account);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        loginButton = findViewById(R.id.buttonLogin);
+        createAccountButton = findViewById(R.id.buttonCreateAccount);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
-        textViewCreateAccount = findViewById(R.id.textViewCreateAccount);
+        textViewLogin = findViewById(R.id.textViewLogin);
 
-        textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class));
-                finish();
-            }
-        });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = editTextEmail.getText().toString().trim();
                 String password = editTextPassword.getText().toString().trim();
 
-                firebaseAuth.signInWithEmailAndPassword(email, password)
+                if (email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(CreateAccountActivity.this, "Fill The Form Completely", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                firebaseAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful())
-                                    Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(CreateAccountActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
                                 else
-                                    Toast.makeText(LoginActivity.this, "Log In Failed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(CreateAccountActivity.this, "Account Creation Failed", Toast.LENGTH_SHORT).show();
                             }
                         });
             }
         });
     }
 }
-
