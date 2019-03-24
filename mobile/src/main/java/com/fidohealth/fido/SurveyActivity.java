@@ -2,82 +2,74 @@ package com.fidohealth.fido;
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SurveyActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
-    private SurveyActivity.UserSurveyTask mAuthTask = null;
-    private User authenticatedUser = null;
-
-    // UI references.
-    private EditText mNameView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
+public class SurveyActivity extends AppCompatActivity{
+    Button submitButton;
+    EditText editTextHeight, editTextWeight, editTextName;
+    ScrollView condition;
+    Spinner conditi;
+    TextView textViewProfile;
+    String[] conditio=new String[]{"Depression","Seizures","ADHD"};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_survey);
-        // Set up the login form.
-        mNameView = findViewById(R.id.password);
+        setContentView(R.layout.activity_login);
 
-        mPasswordView = findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+        submitButton = findViewById(R.id.buttonSubmitSurvey);
+        editTextHeight = findViewById(R.id.Height);
+        editTextWeight = findViewById(R.id.Weight);
+        textViewProfile = findViewById(R.id.Profile);
+        condition = findViewById(R.id.Conditions);
+        conditi = findViewById(R.id.Condit);
+        ArrayAdapter<String> adapt = new ArrayAdapter<String>(SurveyActivity.this, android.R.layout.simple_list_item_1, conditio);
+        adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        conditi.setAdapter(adapt);
+        textViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    return true;
-                }
-                return false;
+            public void onClick(View v) {
+                startActivity(new Intent(SurveyActivity.this, CreateAccountActivity.class));
+                finish();
             }
         });
-    }
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(this,
-                // Retrieve data rows for the device user's 'profile' contact.
-                Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), PROJECTION,
 
-                // Select only email addresses.
-                ContactsContract.Contacts.Data.MIMETYPE +
-                        " = ?", new String[]{ContactsContract.CommonDataKinds.Email
-                .CONTENT_ITEM_TYPE},
-
-                // Show primary email addresses first. Note that there won't be
-                // a primary email address if the user hasn't specified one.
-                ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
-    }
-    @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<String> emails = new ArrayList<>();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            emails.add(cursor.getString(LoginActivity.ProfileQuery.ADDRESS));
-            cursor.moveToNext();
-        }
-
-        addEmailsToAutoComplete(emails);
-    }
-    @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double h = Double.parseDouble(editTextHeight.getText().toString().trim());
+                double w = Double.parseDouble(editTextWeight.getText().toString().trim());
+                String name = editTextName.getText().toString().trim();
+                String c = conditi.getSelectedItem().toString();
+            }
+        });
     }
 }
